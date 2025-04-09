@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Episodios</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Lista de Episodios</h1>
+    {% if episodios %}
+        {% for temporada, lista_episodios in episodios.items() %}
+            <h2>{{ temporada }}</h2>
+            <ul>
+                {% for episodio in lista_episodios %}
+                    <li class="episode-item">
+                        <span class="episode-title">{{ episodio.number }}: {{ episodio.title }}</span>
+                        <div class="episode-actions">
+                            <form action="/rent/{{ temporada|replace(' ', '+') }}/{{ episodio.number }}" method="post" style="display: inline;">
+                                <button type="submit">Reservar</button>
+                            </form>
+                            <a href="/confirm_pago/{{ temporada|replace(' ', '+') }}/{{ episodio.number }}">Pagar</a>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endfor %}
+    {% else %}
+        <p>No hay episodios disponibles.</p>
+    {% endif %}
+</body>
+</html>

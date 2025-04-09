@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Confirmar Pago</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">   
+</head>
+<body>
+    <h1>Confirmar Pago</h1>
+
+    {% if episodio %}
+        <p>Por favor, confirma el pago para el episodio:</p>
+        <ul>
+            <li><strong>Título:</strong> {{ episodio.title }}</li>
+            <li><strong>Número:</strong> {{ episodio.number }}</li>
+        </ul>
+
+        <form action="/confirm_pago/{{ request.path.split('/')[2] }}/{{ episodio.number }}" method="post">
+            <label for="precio">Precio:</label>
+            <input type="number" id="precio" name="precio" value="9.99" readonly><br><br>
+            <button type="submit">Confirmar Pago</button>
+        </form>
+
+        {% if mensaje %}
+            <p>{{ mensaje }}</p>
+        {% endif %}
+        {% if error %}
+            <p style="color: red;">{{ error }}</p>
+        {% endif %}
+
+    {% else %}
+        <p>{{ error or "No se ha encontrado el episodio para confirmar el pago." }}</p>
+    {% endif %}
+
+    <p><a href="/episodios">Volver a la lista de episodios</a></p>
+</body>
+</html>

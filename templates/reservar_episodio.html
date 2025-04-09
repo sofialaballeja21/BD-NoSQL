@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Reservar Episodio</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Reservar Episodio</h1>
+
+    {% if episodio %}
+        <p>¿Deseas reservar el siguiente episodio?</p>
+        <ul>
+            <li><strong>Título:</strong> {{ episodio.title }}</li>
+            <li><strong>Número:</strong> {{ episodio.number }}</li>
+        </ul>
+
+        <form action="/rent/{{ request.path.split('/')[2] }}/{{ episodio.number }}" method="post">
+            <button type="submit">Reservar Episodio</button>
+        </form>
+
+        {% if mensaje %}
+            <p>{{ mensaje }}</p>
+        {% endif %}
+        {% if error %}
+            <p style="color: red;">{{ error }}</p>
+        {% endif %}
+
+    {% else %}
+        <p>{{ mensaje or "No se ha encontrado el episodio." }}</p>
+    {% endif %}
+
+    <p><a href="/episodios">Volver a la lista de episodios</a></p>
+</body>
+</html>

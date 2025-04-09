@@ -1,0 +1,91 @@
+body {
+    font-family: sans-serif;
+    margin: 20px;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+h1, h2 {
+    color: #337ab7;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li.episode-item {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.episode-title {
+    flex-grow: 1; /* Permite que el título ocupe el espacio disponible */
+}
+
+.episode-actions {
+    display: flex;
+    gap: 5px; /* Espacio entre los botones/enlaces */
+}
+
+.episode-actions form {
+    margin-left: 0; /* Elimina el margen izquierdo innecesario del formulario */
+}
+
+.episode-actions button,
+.episode-actions a {
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 5px; /* Espacio entre los botones/enlaces */
+    text-decoration: none; /* Asegura que el enlace no esté subrayado por defecto */
+}
+
+.episode-actions a {
+    background-color: #007bff; /* Color para el botón de pagar */
+}
+
+.episode-actions button:hover,
+.episode-actions a:hover {
+    opacity: 0.8;
+}
+
+.error {
+    color: red;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.mensaje {
+    color: green;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="number"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    width: 100px;
+}
