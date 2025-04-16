@@ -1,11 +1,13 @@
 FROM python:3.12-slim-bullseye
 
-WORKDIR /app
+WORKDIR /API
 
-COPY . .
+COPY API/ .
 
 # Instalar dependencias
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install -r requeriments.txt
 
 # Comando para ejecutar la aplicación
 CMD ["python", "app.py"]
+
+EXPOSE 5000

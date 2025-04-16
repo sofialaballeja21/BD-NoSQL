@@ -1,0 +1,18 @@
+version: '3'
+services:
+   web-api-flask:
+      build: .
+      container_name: 'API-NoSQL'
+      command: ["python", "app.py", "--host=0.0.0.0"]
+      ports:
+          - "5000:5000"
+      volumes:
+          - ./API:/app
+      depends_on:
+          - redis-db
+
+   redis-db:  # <--- ¡Ahora está al mismo nivel que web-api-flask!
+      container_name: 'db-api-mandalorian'
+      image: redis:latest
+      ports:
+        - "6369:6379"
