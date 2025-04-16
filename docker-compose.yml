@@ -11,7 +11,7 @@ services:
       depends_on:
           - redis-db
 
-   redis-db:  # <--- ¡Ahora está al mismo nivel que web-api-flask!
+   redis-db:  
       container_name: 'db-api-mandalorian'
       image: redis:latest
       ports:
